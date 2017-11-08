@@ -19,6 +19,7 @@ def get_path() -> Path or None:
             return file_path
         else:
             print('Invalid file path; Please retry.')
+            print()
 
 
 def count_lines(file_path: Path) -> None:
@@ -29,9 +30,9 @@ def count_lines(file_path: Path) -> None:
         useful_line_sum = 0
         file = file_path.open()
         for line in file:
-            if line.startswith('#'):
+            if line.strip().startswith('#'):
                 continue
-            elif line in '\r\n':
+            elif line.strip() in '\r\n':
                 continue
             else:
                 useful_line_sum += 1
@@ -45,4 +46,6 @@ def count_lines(file_path: Path) -> None:
 
 
 if __name__ == '__main__':
-    count_lines(get_path())
+    path = get_path()
+    if path is not None:
+        count_lines(path)
