@@ -22,7 +22,7 @@ def get_path() -> Path or None:
 
 
 def count_lines(file_path: Path) -> None:
-    """"Counting useful lines
+    """Counting useful lines
     :param file_path: user-input file path"""
     file = None
     try:
