@@ -7,6 +7,8 @@ from pathlib import Path
 
 
 def get_path() -> Path or None:
+    """Get path
+    :returns a Path object or None (when the user wants to quit the program)"""
     while True:
         print('Please enter a file path; an empty input would make the program exit;')
         path_str = input('Your input: ')
@@ -20,6 +22,8 @@ def get_path() -> Path or None:
 
 
 def count_lines(file_path: Path) -> None:
+    """"Counting useful lines
+    :param file_path: user-input file path"""
     file = None
     try:
         useful_line_sum = 0
