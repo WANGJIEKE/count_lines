@@ -1,7 +1,7 @@
 # Count_Lines
 A simple Python program counting "useful" lines in .py file.
 
-The definition of "useful" line is that the line does **NOT** contain a comment, docstring, or the line is **NOT** blank.
+The definition of "useful" line is that the line is **NOT** a comment, a docstring, or blank.
 
 **Notice: the blank new line at the end of each file would not be counted (because actually there is no line there)**
 
@@ -15,7 +15,7 @@ def some_function(par1: int) -> None:
     """This is docstring
     still docstring
     docstring ends here"""
-    print('hello{}'.format(par1))
+    print('hello{}'.format(par1))  # print something
 
 if __name__ == '__main__':
     some_function(5)
