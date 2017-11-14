@@ -1,9 +1,9 @@
 # Count_Lines
 A simple Python program counting "useful" lines in .py file.
 
-The definition of "useful" line is that the line is only containing comment, docstring or nothing.
+The definition of "useful" line is that the line does **NOT** contain a comment, docstring, or the line is **NOT** blank.
 
-**Notice: the blank new line at the end of each file would not be counted**
+**Notice: the blank new line at the end of each file would not be counted (because actually there is no line there)**
 
 Example:
 
