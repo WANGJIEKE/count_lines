@@ -27,19 +27,33 @@ def count_lines(file_path: Path) -> None:
     :param file_path: user-input file path"""
     file = None
     try:
-        useful_line_sum = 0
+        useful_line_sum, comment_line_sum, blank_line_sum, docstring_line_sum = 0, 0, 0, 0
+        docstring_continuing = False
         file = file_path.open()
         for line in file:
             if line.strip().startswith('#'):
-                continue
+                comment_line_sum += 1
             elif line.strip() in '\r\n':
-                continue
+                blank_line_sum += 1
+            elif line.strip().startswith('"""'):
+                docstring_line_sum += 1
+                if not line.strip().endswith('"""'):
+                    docstring_continuing = True
+            elif line.strip().endswith('"""') and docstring_continuing:
+                docstring_line_sum += 1
+                docstring_continuing = False
+            elif docstring_continuing:
+                docstring_line_sum += 1
             else:
                 useful_line_sum += 1
     except OSError:
         print('Cannot open the file!')
     else:
         print('The sum of useful lines is {}.'.format(useful_line_sum))
+        print('The sum of comment lines is {}.'.format(comment_line_sum))
+        print('The sum of blank lines is {}.'.format(blank_line_sum))
+        print('The sum of docstring lines is {}.'.format(docstring_line_sum))
+        print('Total lines: {}'.format(useful_line_sum + comment_line_sum + blank_line_sum + docstring_line_sum))
     finally:
         if file is not None:
             file.close()
