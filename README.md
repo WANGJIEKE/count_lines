@@ -22,11 +22,15 @@ if __name__ == '__main__':
 ```
 The output will be like
 ```text
-Please enter a file path; an empty input would make the program exit;
-Your input: <File Path>
-The sum of useful lines is 4.
-The sum of comment lines is 1.
-The sum of blank lines is 2.
-The sum of docstring lines is 3.
-Total lines: 10
+Please enter a file path for counting single file;
+or enter a directory path for counting all .py files in that directory;
+an input containing only a dot "." would be considered as current work directory;
+an empty input would make the program exit;
+Your input: /foo/bar.py
+--------------------
+/foo/bar.py
+The number of lines of useful is 4.
+The number of lines of comment is 1.
+The number of lines of blank is 2.
+The number of lines of docstring is 3.
 ```

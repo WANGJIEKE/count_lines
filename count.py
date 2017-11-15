@@ -26,6 +26,10 @@ def get_path() -> Path or None:
 
 
 def count_path(path: Path) -> dict:
+    """Count files' lines in a given dir path
+    or Count file's lines for a given file path
+    :param path: dir path or file path
+    :return dictionary containing file's name and its count"""
     result_dict = dict()
     if path.is_file():
         result_dict[str(path)] = count_single_file(path)
@@ -36,6 +40,8 @@ def count_path(path: Path) -> dict:
 
 
 def print_result(result_dict: dict) -> None:
+    """Print out the count from a given dictionary
+    :param result_dict: data dictionary"""
     for file in result_dict:
         print('--------------------')
         print(file)
