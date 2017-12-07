@@ -46,7 +46,8 @@ def print_result(result_dict: dict) -> None:
         print('--------------------')
         print(file)
         for count in result_dict[file]:
-            print('The number of lines of {} is {}.'.format(count.split(sep='_')[0], result_dict[file][count]))
+            print('The number of lines of {} is {}.'.
+                  format(count.capitalize().split(sep='_')[0], result_dict[file][count]))
 
 
 def count_single_file(file_path: Path) -> dict:
@@ -77,5 +78,6 @@ def count_single_file(file_path: Path) -> dict:
         'useful_line_sum': useful_line_sum,
         'comment_line_sum': comment_line_sum,
         'blank_line_sum': blank_line_sum,
-        'docstring_line_sum': docstring_line_sum
+        'docstring_line_sum': docstring_line_sum,
+        'total': useful_line_sum + comment_line_sum + blank_line_sum + docstring_line_sum
         }
