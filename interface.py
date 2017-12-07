@@ -10,6 +10,8 @@ import count
 def user_interface():
     try:
         path = count.get_path()
+        if path is None:
+            return
         result_dict = count.count_path(path)
         count.print_result(result_dict)
     except OSError:
