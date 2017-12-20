@@ -1,10 +1,13 @@
 # Count_Lines
 ## 0x0 Introduction
 A simple Python program counting "useful" lines in .py files.
+
 The definition of "useful" line is that the line is **NOT** a comment, a docstring, or blank.
 ## 0x1 How to use
 You can enter either a file path or a directory path;
+
 (if you enter a directory path, the program will **recursively** count all .py files in that directory and all of its sub-directories)
+
 **Notice: the blank new line at the end of each file would not be counted**
 ## 0x2 Example
 For following file whose path is `/foo/bar.py`
