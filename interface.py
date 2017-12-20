@@ -8,14 +8,17 @@ import count
 
 
 def user_interface():
+    path = count.get_path()
+    result_dict = None
+    if path is None:
+        return
     try:
-        path = count.get_path()
-        if path is None:
-            return
         result_dict = count.count_path(path)
+    except count.UnableToCountError as e:
+        print('--------------------')
+        print(f'Unable to count file at path {e.path}')
+    finally:
         count.print_result(result_dict)
-    except OSError:
-        print('An error occurred when processing files.')
 
 
 if __name__ == '__main__':

@@ -6,6 +6,11 @@
 from pathlib import Path
 
 
+class UnableToCountError(Exception):
+    def __init__(self, path: Path):
+        self.path = path
+
+
 def get_path() -> Path or None:
     """Get path
     :returns a Path object or None (when the user wants to quit the program)"""
@@ -21,8 +26,7 @@ def get_path() -> Path or None:
         if path.exists():
             return path
         else:
-            print('Invalid file path; please retry.')
-            print()
+            print('\nInvalid file path; please retry.\n')
 
 
 def count_path(path: Path) -> dict:
@@ -32,10 +36,16 @@ def count_path(path: Path) -> dict:
     :return dictionary containing file's name and its count"""
     result_dict = dict()
     if path.is_file():
-        result_dict[str(path)] = count_single_file(path)
+        try:
+            result_dict[str(path)] = count_single_file(path)
+        except OSError:
+            raise UnableToCountError(path)
     elif path.is_dir():
         for py_file_path in list(path.glob('**/*.py')):
-            result_dict[str(py_file_path)] = count_single_file(py_file_path)
+            try:
+                result_dict[str(py_file_path)] = count_single_file(py_file_path)
+            except OSError:
+                raise UnableToCountError(py_file_path)
     return result_dict
 
 
